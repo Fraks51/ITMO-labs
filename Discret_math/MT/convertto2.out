@@ -1,0 +1,293 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+
+s 0 -> state 0 <
+s 1 -> state 1 <
+s 2 -> state 2 <
+
+state _ -> state_ * <
+state_ _ -> go_back 0 >
+
+go_back * -> go_back * >
+go_back 2 -> go_back 2 >
+go_back 1 -> go_back 1 >
+go_back 0 -> go_back 0 >
+go_back _ -> gig $0 ^
+
+gig * -> gig * >
+gig 0 -> gig 0 >
+gig 1 -> gig 1 >
+gig 2 -> gig 2 >
+gig $0 -> gig0 $0 <
+gig $1 -> gig1 $1 <
+gig $2 -> gig2 $2 <
+gig $3 -> gig3 $3 <
+gig $4 -> gig4 $4 <
+gig $5 -> gig5 $5 <
+gig $6 -> gig6 $6 <
+gig $7 -> gig7 $7 <
+gig $8 -> gig8 $8 <
+gig $9 -> gig9 $9 <
+
+
+gig0 * -> go_delete * >
+gig1 * -> go_delete * >
+gig2 * -> go_delete * >
+gig3 * -> go_delete * >
+gig4 * -> go_delete * >
+gig5 * -> go_delete * >
+gig6 * -> go_delete * >
+gig7 * -> go_delete * >
+gig8 * -> go_delete * >
+gig9 * -> go_delete * >
+
+gig0 0 -> gig1 $1 <
+gig1 0 -> gig2 $2 <
+gig2 0 -> gig3 $3 <
+gig3 0 -> gig4 $4 <
+gig4 0 -> gig5 $5 <
+gig5 0 -> gig6 $6 <
+gig6 0 -> gig7 $7 <
+gig7 0 -> gig8 $8 <
+gig8 0 -> gig9 $9 < 
+gig9 0 -> go_delete | >
+
+go_delete 1 -> go_delete | >
+go_delete 0 -> go_delete | >
+go_delete 2 -> go_delete | >
+go_delete $0 -> go_delete | >
+go_delete $1 -> go_delete | >
+go_delete $2 -> go_delete | >
+go_delete $3 -> go_delete | >
+go_delete $4 -> go_delete | >
+go_delete $5 -> go_delete | >
+go_delete $6 -> go_delete | >
+go_delete $7 -> go_delete | >
+go_delete $8 -> go_delete | >
+go_delete $9 -> go_delete | >
+go_delete _ -> go_ac _ <
+
+go_ac | -> go_ac _ <
+go_ac * -> go_ac _ <
+go_ac 0 -> go_ac 0 <
+go_ac 1 -> go_ac 1 <
+go_ac _ -> ac _ >
+
+gig0 1 -> write-1_gig0 0 <
+gig1 1 -> write-1_gig1 0 <
+gig2 1 -> write-1_gig2 0 <
+gig3 1 -> write-1_gig3 0 <
+gig4 1 -> write-1_gig4 0 <
+gig5 1 -> write-1_gig5 0 <
+gig6 1 -> write-1_gig6 0 <
+gig7 1 -> write-1_gig7 0 <
+gig8 1 -> write-1_gig8 0 <
+gig9 1 -> write-1_gig9 0 <
+
+
+gig0 2 -> write-1_gig0 1 <
+gig1 2 -> write-1_gig1 1 <
+gig2 2 -> write-1_gig2 1 <
+gig3 2 -> write-1_gig3 1 <
+gig4 2 -> write-1_gig4 1 <
+gig5 2 -> write-1_gig5 1 <
+gig6 2 -> write-1_gig6 1 <
+gig7 2 -> write-1_gig7 1 <
+gig8 2 -> write-1_gig8 1 <
+gig9 2 -> write-1_gig9 1 <
+
+write-1_gig0 * -> write-1_gig0 * <
+write-1_gig0 0 -> write-1_gig0 0 <
+write-1_gig0 1 -> write-1_gig0 1 <
+write-1_gig0 2 -> write-1_gig0 2 <
+write-1_gig0 _ -> write0_gig0 + <
+write0_gig0 _ -> add_start 1 ^
+
+write-1_gig1 * -> write-1_gig1 * <
+write-1_gig1 0 -> write-1_gig1 0 <
+write-1_gig1 1 -> write-1_gig1 1 <
+write-1_gig1 2 -> write-1_gig1 2 <
+write-1_gig1 _ -> write0_gig1 + <
+write0_gig1 _ -> write1_gig1 1 <
+write1_gig1 _ -> add_start 1 ^
+
+write-1_gig2 * -> write-1_gig2 * <
+write-1_gig2 0 -> write-1_gig2 0 <
+write-1_gig2 1 -> write-1_gig2 1 <
+write-1_gig2 2 -> write-1_gig2 2 <
+write-1_gig2 _ -> write0_gig2 + <
+write0_gig2 _ -> write1_gig2 1 <
+write1_gig2 _ -> write2_gig2 0 <
+write2_gig2 _ -> write3_gig2 0 <
+write3_gig2 _ -> add_start 1 ^
+
+write-1_gig3 * -> write-1_gig3 * <
+write-1_gig3 0 -> write-1_gig3 0 <
+write-1_gig3 1 -> write-1_gig3 1 <
+write-1_gig3 2 -> write-1_gig3 2 <
+write-1_gig3 _ -> write0_gig3 + <
+write0_gig3 _ -> write1_gig3 1 <
+write1_gig3 _ -> write2_gig3 1 <
+write2_gig3 _ -> write3_gig3 0 <
+write3_gig3 _ -> write4_gig3 1 <
+write4_gig3 _ -> add_start 1 ^
+
+write-1_gig4 * -> write-1_gig4 * <
+write-1_gig4 0 -> write-1_gig4 0 <
+write-1_gig4 1 -> write-1_gig4 1 <
+write-1_gig4 2 -> write-1_gig4 2 <
+write-1_gig4 _ -> write0_gig4 + <
+write0_gig4 _ -> write1_gig4 1 <
+write1_gig4 _ -> write2_gig4 0 <
+write2_gig4 _ -> write3_gig4 0 <
+write3_gig4 _ -> write4_gig4 0 <
+write4_gig4 _ -> write5_gig4 1 <
+write5_gig4 _ -> write6_gig4 0 <
+write6_gig4 _ -> add_start 1 ^
+
+write-1_gig5 * -> write-1_gig5 * <
+write-1_gig5 0 -> write-1_gig5 0 <
+write-1_gig5 1 -> write-1_gig5 1 <
+write-1_gig5 2 -> write-1_gig5 2 <
+write-1_gig5 _ -> write0_gig5 + <
+write0_gig5 _ -> write1_gig5 1 <
+write1_gig5 _ -> write2_gig5 1 <
+write2_gig5 _ -> write3_gig5 0 <
+write3_gig5 _ -> write4_gig5 0 <
+write4_gig5 _ -> write5_gig5 1 <
+write5_gig5 _ -> write6_gig5 1 <
+write6_gig5 _ -> write7_gig5 1 <
+write7_gig5 _ -> add_start 1 ^
+
+write-1_gig6 * -> write-1_gig6 * <
+write-1_gig6 0 -> write-1_gig6 0 <
+write-1_gig6 1 -> write-1_gig6 1 <
+write-1_gig6 2 -> write-1_gig6 2 <
+write-1_gig6 _ -> write0_gig6 + <
+write0_gig6 _ -> write1_gig6 1 <
+write1_gig6 _ -> write2_gig6 0 <
+write2_gig6 _ -> write3_gig6 0 <
+write3_gig6 _ -> write4_gig6 1 <
+write4_gig6 _ -> write5_gig6 1 <
+write5_gig6 _ -> write6_gig6 0 <
+write6_gig6 _ -> write7_gig6 1 <
+write7_gig6 _ -> write8_gig6 1 <
+write8_gig6 _ -> write9_gig6 0 <
+write9_gig6 _ -> add_start 1 ^
+
+write-1_gig7 * -> write-1_gig7 * <
+write-1_gig7 0 -> write-1_gig7 0 <
+write-1_gig7 1 -> write-1_gig7 1 <
+write-1_gig7 2 -> write-1_gig7 2 <
+write-1_gig7 _ -> write0_gig7 + <
+write0_gig7 _ -> write1_gig7 1 <
+write1_gig7 _ -> write2_gig7 1 <
+write2_gig7 _ -> write3_gig7 0 <
+write3_gig7 _ -> write4_gig7 1 <
+write4_gig7 _ -> write5_gig7 0 <
+write5_gig7 _ -> write6_gig7 0 <
+write6_gig7 _ -> write7_gig7 0 <
+write7_gig7 _ -> write8_gig7 1 <
+write8_gig7 _ -> write9_gig7 0 <
+write9_gig7 _ -> write10_gig7 0 <
+write10_gig7 _ -> write11_gig7 0 <
+write11_gig7 _ -> add_start 1 ^
+
+write-1_gig8 * -> write-1_gig8 * <
+write-1_gig8 0 -> write-1_gig8 0 <
+write-1_gig8 1 -> write-1_gig8 1 <
+write-1_gig8 2 -> write-1_gig8 2 <
+write-1_gig8 _ -> write0_gig8 + <
+write0_gig8 _ -> write1_gig8 1 <
+write1_gig8 _ -> write2_gig8 0 <
+write2_gig8 _ -> write3_gig8 0 <
+write3_gig8 _ -> write4_gig8 0 <
+write4_gig8 _ -> write5_gig8 0 <
+write5_gig8 _ -> write6_gig8 1 <
+write6_gig8 _ -> write7_gig8 0 <
+write7_gig8 _ -> write8_gig8 1 <
+write8_gig8 _ -> write9_gig8 1 <
+write9_gig8 _ -> write10_gig8 0 <
+write10_gig8 _ -> write11_gig8 0 <
+write11_gig8 _ -> write12_gig8 1 <
+write12_gig8 _ -> add_start 1 ^
+
+write-1_gig9 * -> write-1_gig9 * <
+write-1_gig9 0 -> write-1_gig9 0 <
+write-1_gig9 1 -> write-1_gig9 1 <
+write-1_gig9 2 -> write-1_gig9 2 <
+write-1_gig9 _ -> write0_gig9 + <
+write0_gig9 _ -> write1_gig9 1 <
+write1_gig9 _ -> write2_gig9 1 <
+write2_gig9 _ -> write3_gig9 0 <
+write3_gig9 _ -> write4_gig9 0 <
+write4_gig9 _ -> write5_gig9 0 <
+write5_gig9 _ -> write6_gig9 1 <
+write6_gig9 _ -> write7_gig9 1 <
+write7_gig9 _ -> write8_gig9 1 <
+write8_gig9 _ -> write9_gig9 0 <
+write9_gig9 _ -> write10_gig9 0 <
+write10_gig9 _ -> write11_gig9 1 <
+write11_gig9 _ -> write12_gig9 1 <
+write12_gig9 _ -> write13_gig9 0 <
+write13_gig9 _ -> write14_gig9 0 <
+write14_gig9 _ -> add_start 1 ^
+
+
+
+add_start 0 -> add_start 0 >
+add_start 1 -> add_start 1 >
+add_start + -> add_to_num | <
+
+add_to_num 1 -> add_to_num_1 | >
+add_to_num 0 -> add_to_num_0 | >
+
+add_to_num_0 | -> add_to_num_0 | > 
+add_to_num_0 1 -> add_to_num_0 1 >
+add_to_num_0 0 -> add_to_num_0 0 >
+add_to_num_0 # -> add_to_num_0_point # <
+add_to_num_0 $ -> add_to_num_0_point $ <
+add_to_num_0 * -> add_to_num_0_point * <
+
+add_to_num_0_point 1 -> add_find_num_before $ <
+add_to_num_0_point 0 -> add_find_num_before # <
+add_to_num_0_point | -> add_find_num_before # <
+
+add_to_num_1 | -> add_to_num_1 | > 
+add_to_num_1 1 -> add_to_num_1 1 >
+add_to_num_1 0 -> add_to_num_1 0 >
+add_to_num_1 # -> add_to_num_1_point # <
+add_to_num_1 $ -> add_to_num_1_point $ <
+add_to_num_1 * -> add_to_num_1_point * <
+
+add_to_num_1_point 1 -> add_to_num_1_point_pass # <
+add_to_num_1_point 0 -> add_find_num_before $ <
+add_to_num_1_point | -> add_find_num_before $ <
+
+add_to_num_1_point_pass 1 -> add_to_num_1_point_pass 0 <
+add_to_num_1_point_pass 0 -> add_find_num_before 1 <
+add_to_num_1_point_pass | -> add_find_num_before 1 <
+
+add_find_num_before 1 -> add_find_num_before 1 <
+add_find_num_before 0 -> add_find_num_before 0 <
+add_find_num_before | -> add_find_num | <
+
+add_find_num | -> add_find_num | <
+add_find_num 1 -> add_to_num_1 | >
+add_find_num 0 -> add_to_num_0 | >
+add_find_num _ -> slash_zero _ >
+
+slash_zero | -> slash_zero _ >
+slash_zero 0 -> slash_zero _ >
+slash_zero # -> slash_zero _ >
+slash_zero 1 -> easy_splash 1 >
+slash_zero $ -> easy_splash 1 >
+
+easy_splash 1 -> easy_splash 1 >
+easy_splash $ -> easy_splash 1 >
+easy_splash # -> easy_splash 0 >
+easy_splash 0 -> easy_splash 0 >
+easy_splash * -> gig * >
+

@@ -1,0 +1,43 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+
+s 0 -> s 0 >
+s 1 -> s 1 >
+s _ -> copy | <
+
+copy $ -> copy $ <
+copy # -> copy # <
+copy | -> copy | <
+copy 1 -> copy1 $ >
+copy 0 -> copy0 # >
+copy _ -> go_back _ > 
+
+copy0 # -> copy0 # >
+copy0 $ -> copy0 $ >
+copy0 | -> copy0 | >
+copy0 _ -> copy # <
+
+copy1 # -> copy1 # >
+copy1 $ -> copy1 $ >
+copy1 | -> copy1 | >
+copy1 _ -> copy $ <
+
+go_back 1 -> go_back 1 >
+go_back 0 -> go_back 0 >
+go_back # -> go_back # >
+go_back $ -> go_back $ >
+go_back | -> go_back | >
+go_back _ -> back_to_begin _ <
+
+back_to_begin $ -> back_to_begin 1 <
+back_to_begin # -> back_to_begin 0 <
+back_to_begin 1 -> back_to_begin 1 <
+back_to_begin 0 -> back_to_begin 0 <
+back_to_begin | -> back_to_begin | <
+back_to_begin _ -> delete _ >
+
+delete 0 -> delete _ >
+delete 1 -> delete _ >
+delete | -> ac _ >

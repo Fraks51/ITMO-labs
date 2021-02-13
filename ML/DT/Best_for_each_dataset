@@ -1,0 +1,84 @@
+Best params for 01 dataset:
+[3, 'entropy', 'best']
+Accuracy: 0.9997429966589566
+<================================>
+Best params for 02 dataset:
+[9, 'entropy', 'best']
+Accuracy: 0.7033078880407124
+<================================>
+Best params for 03 dataset:
+[1, 'gini', 'best']
+Accuracy: 1.0
+<================================>
+Best params for 04 dataset:
+[5, 'entropy', 'best']
+Accuracy: 0.9951304347826087
+<================================>
+Best params for 05 dataset:
+[1, 'gini', 'best']
+Accuracy: 0.9956709956709957
+<================================>
+Best params for 06 dataset:
+[3, 'entropy', 'best']
+Accuracy: 0.9988962472406181
+<================================>
+Best params for 07 dataset:
+[3, 'entropy', 'best']
+Accuracy: 0.9967441860465116
+<================================>
+Best params for 08 dataset:
+[2, 'gini', 'best']
+Accuracy: 0.997920997920998
+<================================>
+Best params for 09 dataset:
+[5, 'entropy', 'best']
+Accuracy: 0.8450980392156863
+<================================>
+Best params for 10 dataset:
+[4, 'entropy', 'best']
+Accuracy: 0.9979879275653923
+<================================>
+Best params for 11 dataset:
+[1, 'gini', 'best']
+Accuracy: 0.999195171026157
+<================================>
+Best params for 12 dataset:
+[8, 'entropy', 'best']
+Accuracy: 0.8756665731125456
+<================================>
+Best params for 13 dataset:
+[7, 'entropy', 'best']
+Accuracy: 0.6587155963302752
+<================================>
+Best params for 14 dataset:
+[5, 'entropy', 'best']
+Accuracy: 0.990351215746816
+<================================>
+Best params for 15 dataset:
+[1, 'gini', 'best']
+Accuracy: 1.0
+<================================>
+Best params for 16 dataset:
+[1, 'gini', 'best']
+Accuracy: 1.0
+<================================>
+Best params for 17 dataset:
+[7, 'entropy', 'best']
+Accuracy: 0.852037967615857
+<================================>
+Best params for 18 dataset:
+[5, 'entropy', 'best']
+Accuracy: 0.9426656738644825
+<================================>
+Best params for 19 dataset:
+[7, 'entropy', 'best']
+Accuracy: 0.8387096774193549
+<================================>
+Best params for 20 dataset:
+[7, 'gini', 'best']
+Accuracy: 0.9698890649762282
+<================================>
+Best params for 21 dataset:
+[93, 'entropy', 'best']
+Accuracy: 0.8129359543436906
+<================================>

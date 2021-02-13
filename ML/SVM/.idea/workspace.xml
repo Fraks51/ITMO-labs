@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="82883171-759b-4943-931d-d47d77e9207d" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="JupyterTrust" id="1c1df902-80b7-4970-a96e-c1cafc752e7d" />
+  <component name="ProjectId" id="1k7ucj2Byli0iwsuoNVPkGbctm3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration name="SVM" type="PythonConfigurationType" factoryName="Python">
+      <module name="SVM" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="SVM" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="82883171-759b-4943-931d-d47d77e9207d" name="Default Changelist" comment="" />
+      <created>1605064031740</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605064031740</updated>
+      <workItem from="1605064041922" duration="488000" />
+      <workItem from="1605089762720" duration="8610000" />
+      <workItem from="1605240234773" duration="23000" />
+      <workItem from="1605474786719" duration="2482000" />
+      <workItem from="1605500619038" duration="28000" />
+      <workItem from="1605526268936" duration="197000" />
+      <workItem from="1605536459156" duration="4107000" />
+      <workItem from="1606698007261" duration="90000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="240" y="266" key="#xdebugger.evaluate" timestamp="1605094955800">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="240" y="266" key="#xdebugger.evaluate/0.0.1920.1044@0.0.1920.1044" timestamp="1605094955800" />
+    <state x="1225" y="276" key="FileChooserDialogImpl" timestamp="1605526463633">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="1225" y="276" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1605526463633" />
+    <state width="1874" height="274" key="GridCell.Tab.0.bottom" timestamp="1605583103948">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state width="1874" height="274" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1605583103948" />
+    <state width="1874" height="274" key="GridCell.Tab.0.center" timestamp="1605583103945">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state width="1874" height="274" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1605583103945" />
+    <state width="1874" height="274" key="GridCell.Tab.0.left" timestamp="1605583103943">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state width="1874" height="274" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1605583103942" />
+    <state width="1874" height="274" key="GridCell.Tab.0.right" timestamp="1605583103946">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state width="1874" height="274" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1605583103946" />
+    <state width="1874" height="336" key="GridCell.Tab.1.bottom" timestamp="1605095037413">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state width="1874" height="336" key="GridCell.Tab.1.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1605095037413" />
+    <state width="1874" height="336" key="GridCell.Tab.1.center" timestamp="1605095037412">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state width="1874" height="336" key="GridCell.Tab.1.center/0.0.1920.1044@0.0.1920.1044" timestamp="1605095037412" />
+    <state width="1874" height="336" key="GridCell.Tab.1.left" timestamp="1605095037412">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state width="1874" height="336" key="GridCell.Tab.1.left/0.0.1920.1044@0.0.1920.1044" timestamp="1605095037412" />
+    <state width="1874" height="336" key="GridCell.Tab.1.right" timestamp="1605095037413">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state width="1874" height="336" key="GridCell.Tab.1.right/0.0.1920.1044@0.0.1920.1044" timestamp="1605095037413" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SVM$SVM.coverage" NAME="SVM Coverage Results" MODIFIED="1605094917545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

@@ -1,0 +1,53 @@
+3
+S 0 _ _ -> S _ > 0 > _ ^
+S 1 _ _ -> S _ > 1 > _ ^
+S ( _ _ -> S _ > _ ^ ( >
+S o _ _ -> or_token _ ^ _ ^ _ <
+S a _ _ -> and_token _ ^ _ ^ _ <
+S ) _ _ -> close_token _ ^ _ ^ _ <
+S _ _ _ -> unfill_stack _ ^ _ ^ _ <
+
+or_token _ _ o -> or_token _ ^ o > _ <
+or_token _ _ a -> or_token _ ^ a > _ <
+or_token _ _ _ -> S _ > _ ^ o >
+or_token _ _ ( -> or_token _ ^ _ ^ ( >
+
+and_token _ _ o -> and_token _ ^ _ ^ o >
+and_token _ _ a -> and_token _ ^ a > _ <
+and_token _ _ _ -> S _ > _ ^ a >
+and_token _ _ ( -> and_token _ ^ _ ^ ( >
+
+close_token _ _ o -> close_token _ ^ o > _ <
+close_token _ _ a -> close_token _ ^ a > _ <
+close_token _ _ ( -> S _ > _ ^ _ ^
+
+unfill_stack _ _ a -> unfill_stack _ ^ a > _ <
+unfill_stack _ _ o -> unfill_stack _ ^ o > _ <
+unfill_stack _ _ _ -> swap _ ^ _ < _ ^
+
+swap _ 1 _ -> swap 1 < _ < _ ^
+swap _ 0 _ -> swap 0 < _ < _ ^
+swap _ a _ -> swap a < _ < _ ^
+swap _ o _ -> swap o < _ < _ ^
+swap _ _ _ -> Old_S _ > _ ^ _ ^
+
+
+Old_S 0 _ _ -> Old_S _ > 0 > _ ^
+Old_S 1 _ _ -> Old_S _ > 1 > _ ^
+Old_S a _ _ -> and1 | ^ _ < _ ^
+Old_S o _ _ -> or1 | ^ _ < _ ^
+Old_S _ _ _ -> ac_go _ ^ _ < _ ^
+ac_go _ 1 _ -> AC 1 ^ _ ^ _ ^
+ac_go _ 0 _ -> AC 0 ^ _ ^ _ ^
+and1 | 1 _ -> and2_1 | ^ _ < _ ^
+and1 | 0 _ -> and2_0 | ^ _ < _ ^
+and2_1 | 1 _ -> Old_S _ > 1 > _ ^
+and2_1 | 0 _ -> Old_S _ > 0 > _ ^
+and2_0 | 1 _ -> Old_S _ > 0 > _ ^
+and2_0 | 0 _ -> Old_S _ > 0 > _ ^
+or1 | 1 _ -> or2_1 | ^ _ < _ ^
+or1 | 0 _ -> or2_0 | ^ _ < _ ^
+or2_0 | 1 _ -> Old_S _ > 1 > _ ^
+or2_0 | 0 _ -> Old_S _ > 0 > _ ^
+or2_1 | 1 _ -> Old_S _ > 1 > _ ^
+or2_1 | 0 _ -> Old_S _ > 1 > _ ^

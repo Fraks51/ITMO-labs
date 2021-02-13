@@ -1,0 +1,56 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+
+s 1 -> s 1 >
+s 0 -> s 0 >
+s < -> sub < <
+
+sub | -> sub | <
+sub 1 -> sub1_before | >
+sub 0 -> sub0_before | >
+sub _ -> check_before _ >
+
+sub0_before | -> sub0_before | >
+sub0_before < -> sub0 < >
+
+sub1_before | -> sub1_before | >
+sub1_before < -> sub1 < >
+
+sub1 1 -> sub1 1 >
+sub1 0 -> sub1 0 >
+sub1 # -> rsub1 # <
+sub1 $ -> rsub1 $ <
+sub1 _ -> rsub1 _ <
+
+rsub1 1 -> go_back # <
+rsub1 0 -> rsub1_fixed $ <
+rsub1 < -> rj < ^
+
+rsub1_fixed 1 -> go_back 0 <
+rsub1_fixed 0 -> rsub1_fixed 1 <
+rsub1_fixed < -> rj < ^
+
+go_back 1 -> go_back 1 <
+go_back 0 -> go_back 0 <
+go_back < -> sub < <
+
+sub0 1 -> sub0 1 >
+sub0 0 -> sub0 0 >
+sub0 # -> rsub0 # <
+sub0 $ -> rsub0 $ <
+sub0 _ -> rsub0 _ <
+
+rsub0 < -> rj < ^
+rsub0 1 -> go_back $ <
+rsub0 0 -> go_back # <
+
+check_before | -> check_before _ >
+check_before < -> check _ >
+
+check # -> check _ >
+check 0 -> check _ >
+check 1 -> ac 1 ^
+check $ -> ac 1 ^
+check _ -> rj _ ^

@@ -1,0 +1,65 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+
+s 0 -> rj_d 0 >
+s 1 -> rj_d 1 >
+
+rj_d 0 -> ac_f 0 >
+rj_d 1 -> ac_f 1 >
+rj_d _ -> rj _ <
+
+ac_f 0 -> rj_d 0 >
+ac_f 1 -> rj_d 1 >
+ac_f _ -> drill _ <
+
+drill 1 -> back_drill $ <
+drill 0 -> back_drill # <
+
+back_drill 1 -> back_drill 1 <
+back_drill 0 -> back_drill 0 <
+back_drill _ -> check_center0 _ >
+back_drill $ -> check_center0 $ >
+back_drill # -> check_center0 # >
+
+check_center0 0 -> check_center1 # >
+check_center0 1 -> check_center1 $ >
+
+check_center1 # -> is_center # <
+check_center1 $ -> is_center $ <
+check_center1 0 -> forward_drill 0 >
+check_center1 1 -> forward_drill 1 >
+
+forward_drill 1 -> forward_drill 1 >
+forward_drill 0 -> forward_drill 0 >
+forward_drill # -> drill # <
+forward_drill $ -> drill $ <
+
+is_center # -> check0 | >
+is_center $ -> check1 | >
+
+check0 | -> check0 | >
+check0 _ -> check0_c _ <
+check0 # -> check0 # >
+check0 $ -> check0 $ >
+
+check1 | -> check1 | >
+check1 _ -> check1_c _ <
+check1 # -> check1 # >
+check1 $ -> check1 $ >
+
+check0_c # -> drill_v _ <
+check0_c $ -> rj _ <
+
+check1_c $ -> drill_v _ <
+check1_c # -> rj _ <
+
+drill_v # -> drill_v # <
+drill_v $ -> drill_v $ <
+drill_v | -> drill_find | <
+
+drill_find # -> check0 | >
+drill_find _ -> ac _ >
+drill_find $ -> check1 | >
+drill_find | -> drill_find | <

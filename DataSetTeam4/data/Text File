@@ -1,0 +1,38 @@
+kernel: triweight, dist: chebyshev, window: fixed, h: 1
+Loss: 0.436
+kernel: triweight, dist: chebyshev, window: fixed, h: 1.5
+Loss: 0.44
+kernel: tricube, dist: manhattan, window: variable, h: 2
+Loss: 0.484
+kernel: tricube, dist: manhattan, window: variable, h: 3
+Loss: 0.491
+kernel: tricube, dist: manhattan, window: variable, h: 5
+Loss: 0.492
+kernel: tricube, dist: manhattan, window: variable, h: 8
+Loss: 0.492
+kernel: tricube, dist: manhattan, window: variable, h: 10
+Loss: 0.503
+kernel: tricube, dist: manhattan, window: variable, h: 13
+Loss: 0.507
+kernel: tricube, dist: manhattan, window: fixed, h: 0.25
+Loss: 0.481
+kernel: tricube, dist: manhattan, window: fixed, h: 0.5
+Loss: 0.491
+kernel: tricube, dist: manhattan, window: fixed, h: 0.75
+Loss: 0.508
+kernel: tricube, dist: manhattan, window: fixed, h: 1
+Loss: 0.512
+kernel: tricube, dist: manhattan, window: fixed, h: 1.5
+Loss: 0.501
+kernel: tricube, dist: euclidean, window: variable, h: 2
+Loss: 0.455
+kernel: tricube, dist: euclidean, window: variable, h: 3
+Loss: 0.455
+kernel: tricube, dist: euclidean, window: variable, h: 5
+Loss: 0.471
+kernel: tricube, dist: euclidean, window: variable, h: 8
+Loss: 0.484
+kernel: tricube, dist: euclidean, window: variable, h: 10
+Loss: 0.493
+kernel: tricube, dist: euclidean, window: variable, h: 13
+Loss: 0.487 

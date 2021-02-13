@@ -1,0 +1,18 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+
+s _ -> back_check _ <
+s ( -> s ( >
+s | -> s | >
+s ) -> back_delete | <
+
+back_delete | -> back_delete | <
+back_delete _ -> rj _ >
+back_delete ( -> s | >
+
+back_check | -> back_check | <
+back_check ( -> rj _ <
+back_check ) -> rj _ <
+back_check _ -> ac _ >

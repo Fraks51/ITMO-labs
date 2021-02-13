@@ -1,0 +1,165 @@
+3
+
+S 0 _ _ -> S 0 > _ ^ _ ^
+S 1 _ _ -> S 1 > _ ^ _ ^
+S | _ _ -> S | > _ ^ _ ^
+S _ _ _ -> S_back | < _ ^ _ ^
+
+S_back | _ _ -> S_back | < _ ^ _ ^
+S_back 1 _ _ -> S_back 1 < _ ^ _ ^
+S_back 0 _ _ -> S_back 0 < _ ^ _ ^
+S_back _ _ _ -> Fake_S _ > _ ^ _ ^
+
+Fake_S 1 _ _ -> Fake_S 1 > 1 > _ ^
+Fake_S 0 _ _ -> Fake_S 0 > 0 > _ ^
+Fake_S _ _ _ -> Accept_fast_ac _ < _ ^ _ <
+Fake_S % _ _ -> Fake_S % > _ ^ _ ^
+Fake_S | _ _ -> CompareMin_start | > < > _ ^
+
+CompareMin_start_S % _ _ -> CompareMin_start_S % > _ ^ _ ^
+CompareMin_start_S | _ _ -> CompareMin_start | > < > _ ^
+
+
+Accept_fast_ac % _ | -> Accept_to_ac _ < _ ^ _ <
+Accept_to_ac % _ 1 -> Accept_to_ac 1 < _ ^ _ <
+Accept_to_ac % _ 0 -> Accept_to_ac 0 < _ ^ _ <
+Accept_to_ac % _ | -> Accept_to_ac | < _ ^ _ <
+Accept_to_ac _ _ _ -> AC _ > _ ^ _ ^
+
+
+
+CompareMin_start 1 _ _ -> CompareMin_start 1 > 1 > _ ^
+CompareMin_start 0 _ _ -> CompareMin_start 0 > 0 > _ ^
+CompareMin_start % _ _ -> CompareMin_start % > _ ^ _ ^
+CompareMin_start | _ _ -> CompareMin_copamare_start | ^ _ ^ _ ^
+CompareMin_start _ _ _ -> Delete_less_symbol _ < _ < _ ^
+
+Delete_less_symbol | < _ -> CompareMin_delete_min | ^ _ ^ _ ^
+Delete_less_symbol % < _ -> CompareMin_delete_min % ^ _ ^ _ ^
+
+CompareMin_copamare_start | _ _ -> CompareMin_copamare_find_elem_b | ^ _ < _ ^
+
+CompareMin_copamare_find_elem_b | 1 _ -> CompareMin_copamare_find_elem_b | ^  1 < _ ^  
+CompareMin_copamare_find_elem_b | 0 _ -> CompareMin_copamare_find_elem_b | ^  0 < _ ^
+CompareMin_copamare_find_elem_b | < _ -> CompareMin_copamare_find_elem | ^  < < _ ^
+
+CompareMin_copamare_find_elem | # _ -> CompareMin_copamare_find_elem | ^ # < _ ^
+CompareMin_copamare_find_elem | $ _ -> CompareMin_copamare_find_elem | ^ $ < _ ^
+CompareMin_copamare_find_elem | 1 _ -> CompareMin_copamare_sub_1_b | ^ $ > _ ^
+CompareMin_copamare_find_elem | 0 _ -> CompareMin_copamare_sub_0_b | ^ # > _ ^
+CompareMin_copamare_find_elem | _ _ -> CompareMin_nonreplace_start | ^ _ > _ ^
+
+
+CompareMin_copamare_sub_0_b | # _ -> CompareMin_copamare_sub_0_b | ^ # > _ ^
+CompareMin_copamare_sub_0_b | $ _ -> CompareMin_copamare_sub_0_b | ^ $ > _ ^
+CompareMin_copamare_sub_0_b | < _ -> CompareMin_copamare_sub_0 | ^ < > _ ^
+
+CompareMin_copamare_sub_0 | 1 _ -> CompareMin_copamare_sub_0 | ^ 1 > _ ^
+CompareMin_copamare_sub_0 | 0 _ -> CompareMin_copamare_sub_0 | ^ 0 > _ ^
+CompareMin_copamare_sub_0 | # _ -> CompareMin_copamare_sub_0 | ^ # < _ ^
+CompareMin_copamare_sub_0 | $ _ -> CompareMin_sub_0 | ^ $ < _ ^
+CompareMin_copamare_sub_0 | _ _ -> CompareMin_sub_0 | ^ _ < _ ^
+CompareMin_copamare_sub_0 | # _ -> CompareMin_sub_0 | ^ # < _ ^
+
+CompareMin_sub_0 | < _ -> CompareMin_replace_start | ^ < > _ ^
+CompareMin_sub_0 | 1 _ -> CompareMin_copamare_find_elem_b | ^ $ < _ ^
+CompareMin_sub_0 | 0 _ -> CompareMin_copamare_find_elem_b | ^ # < _ ^
+
+
+CompareMin_copamare_sub_1_b | # _ -> CompareMin_copamare_sub_1_b | ^ # > _ ^
+CompareMin_copamare_sub_1_b | $ _ -> CompareMin_copamare_sub_1_b | ^ $ > _ ^
+CompareMin_copamare_sub_1_b | < _ -> CompareMin_copamare_sub_1 | ^ < > _ ^
+
+CompareMin_copamare_sub_1 | 1 _ -> CompareMin_copamare_sub_1 | ^ 1 > _ ^
+CompareMin_copamare_sub_1 | 0 _ -> CompareMin_copamare_sub_1 | ^ 0 > _ ^
+CompareMin_copamare_sub_1 | # _ -> CompareMin_copamare_sub_1 | ^ # < _ ^
+CompareMin_copamare_sub_1 | $ _ -> CompareMin_sub_1 | ^ $ < _ ^
+CompareMin_copamare_sub_1 | _ _ -> CompareMin_sub_1 | ^ _ < _ ^
+CompareMin_copamare_sub_1 | # _ -> CompareMin_sub_1 | ^ # < _ ^
+
+CompareMin_sub_1 | < _ -> CompareMin_replace_start | ^ < > _ ^
+CompareMin_sub_1 | 1 _ -> CompareMin_copamare_find_elem_b | ^ # < _ ^
+CompareMin_sub_1 | 0 _ -> CompareMin_sub_help | ^ $ < _ ^
+
+CompareMin_sub_help | 1 _ -> CompareMin_copamare_find_elem_b | ^ 0 < _ ^
+CompareMin_sub_help | 0 _ -> CompareMin_sub_help | ^ 1 < _ ^
+CompareMin_sub_help | < _ -> CompareMin_replace_start | ^ < > _ ^
+
+CompareMin_nonreplace_start | # _ -> CompareMin_nonreplace_start | ^ 0 > _ ^ 
+CompareMin_nonreplace_start | $ _ -> CompareMin_nonreplace_start | ^ 1 > _ ^
+CompareMin_nonreplace_start | < _ -> Deleter_wipe_less | ^ < > _ ^
+
+Deleter_wipe_less | 1 _ -> Deleter_wipe_less | ^ | > _ ^
+Deleter_wipe_less | 0 _ -> Deleter_wipe_less | ^ | > _ ^
+Deleter_wipe_less | $ _ -> Deleter_wipe_less | ^ | > _ ^
+Deleter_wipe_less | # _ -> Deleter_wipe_less | ^ | > _ ^
+Deleter_wipe_less | _ _ -> Deleter_wipe_back | ^ _ < _ ^
+
+Deleter_wipe_back | | _ -> Deleter_wipe_back | ^ _ < _ ^
+Deleter_wipe_back | < _ -> CompareMin_start_S | ^ _ ^ _ ^
+
+CompareMin_replace_start | 0 _ -> CompareMin_replace_start | ^ 0 > _ ^
+CompareMin_replace_start | $ _ -> CompareMin_replace_start | ^ $ > _ ^
+CompareMin_replace_start | # _ -> CompareMin_replace_start | ^ # > _ ^
+CompareMin_replace_start | 1 _ -> CompareMin_replace_start | ^ 1 > _ ^
+CompareMin_replace_start | _ _ -> CompareMin_replace_delete_all | ^ _ < _ ^
+
+CompareMin_replace_delete_all | 0 _ -> CompareMin_replace_delete_all | ^ _ < _ ^
+CompareMin_replace_delete_all | 1 _ -> CompareMin_replace_delete_all | ^ _ < _ ^
+CompareMin_replace_delete_all | $ _ -> CompareMin_replace_delete_all | ^ _ < _ ^
+CompareMin_replace_delete_all | # _ -> CompareMin_replace_delete_all | ^ _ < _ ^
+CompareMin_replace_delete_all | < _ -> CompareMin_replace_delete_all | ^ _ < _ ^
+CompareMin_replace_delete_all | _ _ -> CompareMin_replace_from_top | < _ ^ _ ^
+
+CompareMin_replace_from_top 1 _ _ -> CompareMin_replace_from_top 1 < _ ^ _ ^
+CompareMin_replace_from_top 0 _ _ -> CompareMin_replace_from_top 0 < _ ^ _ ^
+CompareMin_replace_from_top _ _ _ -> CompareMin_replace_from_top_cpy _ > _ ^ _ ^
+CompareMin_replace_from_top | _ _ -> CompareMin_replace_from_top_cpy | > _ ^ _ ^
+CompareMin_replace_from_top % _ _ -> CompareMin_replace_from_top_cpy % > _ ^ _ ^
+
+CompareMin_replace_from_top_cpy 1 _ _ -> CompareMin_replace_from_top_cpy 1 > 1 > _ ^
+CompareMin_replace_from_top_cpy 0 _ _ -> CompareMin_replace_from_top_cpy 0 > 0 > _ ^
+CompareMin_replace_from_top_cpy | _ _ -> CompareMin_start_S | ^ _ ^ _ ^
+
+
+CompareMin_delete_min | _ _ -> Start_equal | < _ < _ ^
+CompareMin_delete_min 0 _ _ -> CompareMin_delete_min 0 < _ ^ _ ^
+CompareMin_delete_min 1 _ _ -> CompareMin_delete_min 1 < _ ^ _ ^
+CompareMin_delete_min % _ _ -> CompareMin_delete_min % < _ ^ _ ^
+
+
+Go_to_end 1 0 _ -> Go_to_end 1 ^ 0 > _ ^
+Go_to_end 0 0 _ -> Go_to_end 0 ^ 0 > _ ^
+Go_to_end 1 1 _ -> Go_to_end 1 ^ 1 > _ ^
+Go_to_end 0 1 _ -> Go_to_end 0 ^ 1 > _ ^
+Go_to_end 1 _ _ -> CompareMin_delete_min 1 < _ ^ _ ^
+Go_to_end 0 _ _ -> CompareMin_delete_min 0 < _ ^ _ ^
+
+Start_equal 1 1 _ -> Start_equal 1 < 1 < _ ^
+Start_equal 0 0 _ -> Start_equal 0 < 0 < _ ^
+Start_equal 1 0 _ -> Go_to_end 1 ^ 0 > _ ^
+Start_equal 0 1 _ -> Go_to_end 0 ^ 1 > _ ^
+Start_equal 1 _ _ -> Go_to_end 1 ^ _ > _ ^
+Start_equal 0 _ _ -> Go_to_end 0 ^ _ > _ ^
+Start_equal | 0 _ -> Go_to_end | > 0 > _ ^
+Start_equal | 1 _ -> Go_to_end | > 1 > _ ^
+Start_equal % 0 _ -> Go_to_end % > 0 > _ ^
+Start_equal % 1 _ -> Go_to_end % > 1 > _ ^
+Start_equal | _ _ -> Delete_and_add | > _ > _ ^
+Start_equal % _ _ -> Delete_and_add % > _ > _ ^
+Start_equal _ _ _ -> Delete_and_add _ > _ > _ ^
+
+Delete_and_add 1 1 _ -> Delete_and_add % > _ > 1 >
+Delete_and_add 0 0 _ -> Delete_and_add % > _ > 0 >
+Delete_and_add | _ _ -> GO_TO_S % < _ ^ | >
+
+GO_TO_S % _ _ -> GO_TO_S % < _ ^ _ ^
+GO_TO_S 1 _ _ -> GO_TO_S 1  < _ ^ _ ^
+GO_TO_S 0 _ _ -> GO_TO_S 0 < _ ^ _ ^
+GO_TO_S < _ _ -> GO_TO_S < < _ ^ _ ^
+GO_TO_S | _ _ -> GO_TO_S | < _ ^ _ ^
+GO_TO_S _ _ _ -> Fake_S _ > _ ^ _ ^
+
+
+
+

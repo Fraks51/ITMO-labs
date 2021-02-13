@@ -1,0 +1,50 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+
+s 0 -> s 0 >
+s 1 -> s 1 >
+s + -> s + >
+s _ -> delete_add _ <
+ 
+delete_add 1 -> add_one_plus _ <
+delete_add 0 -> add_zero_plus _ <
+delete_add + -> back_to_begin _ <
+
+back_to_begin $ -> back_to_begin 1 <
+back_to_begin # -> back_to_begin 0 <
+back_to_begin 1 -> back_to_begin 1 <
+back_to_begin 0 -> back_to_begin 0 <
+back_to_begin _ -> ac _ >
+ 
+add_one_plus 1 -> add_one_plus 1 <
+add_one_plus 0 -> add_one_plus 0 <
+add_one_plus + -> add_one + <
+ 
+add_one $ -> add_one $ <
+add_one # -> add_one # <
+add_one 0 -> go_back $ >
+add_one 1 -> add_one_fixed # <
+add_one _ -> go_back $ >
+ 
+add_one_fixed 0 -> go_back 1 >
+add_one_fixed 1 -> add_one_fixed 0 <
+add_one_fixed _ -> go_back 1 >
+ 
+go_back 1 -> go_back 1 >
+go_back 0 -> go_back 0 >
+go_back + -> go_back + > 
+go_back # -> go_back # >
+go_back $ -> go_back $ >
+go_back _ -> delete_add _ <
+ 
+add_zero_plus 1 -> add_zero_plus 1 <
+add_zero_plus 0 -> add_zero_plus 0 <
+add_zero_plus + -> add_zero + <
+ 
+add_zero $ -> add_zero $ <
+add_zero # -> add_zero # <
+add_zero _ -> go_back # >
+add_zero 1 -> go_back $ >
+add_zero 0 -> go_back # >

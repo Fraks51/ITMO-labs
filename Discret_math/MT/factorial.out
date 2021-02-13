@@ -1,0 +1,373 @@
+start: sf
+accept: ac
+reject: rj
+blank: _
+ 
+sf 0 -> ac 1 ^
+sf 1 -> s 1 >
+ 
+s 0 -> s 0 >
+s 1 -> s 1 >
+s _ -> mul_copy * < 
+ 
+mul_copy 0 -> mul_copy 0 <
+mul_copy 1 -> mul_copy 1 <
+mul_copy * -> mul_copy * <
+mul_copy _ -> try_mul_copy _ >
+mul_copy # -> try_mul_copy # >
+mul_copy $ -> try_mul_copy $ >
+ 
+try_mul_copy * -> mul_copy_minus1 * >
+try_mul_copy 0 -> try_mul_copy_0 # >
+try_mul_copy 1 -> try_mul_copy_1 $ >
+ 
+mul_copy_minus1 1 -> mul_copy_minus1 1 >
+mul_copy_minus1 0 -> mul_copy_minus1 0 >
+mul_copy_minus1 _ -> mul_copy_minus _ <
+ 
+mul_copy_minus 1 -> mul_copy_rework 0 <
+mul_copy_minus 0 -> mul_copy_minus 1 <
+ 
+mul_copy_rework $ -> mul_copy_rework 1 <
+mul_copy_rework # -> mul_copy_rework 0 <
+mul_copy_rework 1 -> mul_copy_rework 1 <
+mul_copy_rework 0 -> mul_copy_rework 0 <
+mul_copy_rework * -> mul_copy_rework * <
+mul_copy_rework _ -> old_s _ >
+ 
+try_mul_copy_1 * -> try_mul_copy_1 * >
+try_mul_copy_1 0 -> try_mul_copy_1 0 >
+try_mul_copy_1 1 -> try_mul_copy_1 1 >
+try_mul_copy_1 _ -> mul_copy 1 <
+ 
+try_mul_copy_0 * -> try_mul_copy_0 * >
+try_mul_copy_0 0 -> try_mul_copy_0 0 >
+try_mul_copy_0 1 -> try_mul_copy_0 1 >
+try_mul_copy_0 _ -> mul_copy 0 <
+ 
+ 
+old_s 0 -> old_s 0 >
+old_s 1 -> old_s 1 >
+old_s * -> old_s * >
+old_s _ -> minus1_0 MUL_COPY <
+ 
+minus1_0 1 -> second_copy_back_to_start 0 <
+minus1_0 0 -> help 1 <
+ 
+help 1 -> second_copy_back_to_start 0 <
+help * -> write_0 | >
+help 0 -> help 1 <
+ 
+write_0 MUL_COPY -> write_0 | >
+write_0 1 -> write_0 | >
+write_0 0 -> write_0 | >
+write_0 _ -> delete_all_ _ <
+ 
+delete_all_ | -> delete_all_ _ <
+delete_all_ 0 -> ac 0 ^
+delete_all_ 1 -> ac 1 ^
+ 
+second_copy_back_to_start 1 -> second_copy_back_to_start 1 <
+second_copy_back_to_start 0 -> second_copy_back_to_start 0 <
+second_copy_back_to_start * -> second_copy_element * >
+second_copy_back_to_start MUL_COPY -> second_copy_back_to_start MUL_COPY <
+second_copy_back_to_start $ -> second_copy_element $ >
+second_copy_back_to_start # -> second_copy_element # >
+ 
+second_copy_element 1 -> second_copy_1 $ >
+second_copy_element 0 -> second_copy_0 # >
+second_copy_element MUL_COPY -> write_COPY MUL_COPY > 
+ 
+ 
+write_COPY 0 -> write_COPY 0 >
+write_COPY 1 -> write_COPY 1 >
+write_COPY _ -> copy_back COPY <
+ 
+second_copy_0 0 -> second_copy_0 0 >
+second_copy_0 1 -> second_copy_0 1 >
+second_copy_0 MUL_COPY -> second_copy_0 MUL_COPY >
+second_copy_0 _ -> second_copy_back_to_start 0 <
+ 
+second_copy_1 0 -> second_copy_1 0 >
+second_copy_1 1 -> second_copy_1 1 >
+second_copy_1 MUL_COPY -> second_copy_1 MUL_COPY >
+second_copy_1 _ -> second_copy_back_to_start 1 <
+ 
+ 
+ 
+ 
+ 
+ 
+copy_back COPY -> copy_back COPY < 
+copy_back MUL_COPY -> copy_back MUL_COPY <
+copy_back * -> copy_start * <
+copy_back 1 -> copy_back 1 <
+copy_back 0 -> copy_back 0 <
+copy_back $ -> copy_back 1 <
+copy_back # -> copy_back 0 <
+ 
+copy_start 1 -> copy_start 1 <
+copy_start 0 -> copy_start 0 < 
+copy_start $ -> copy_last_h $ >
+copy_start # -> copy_last_h # >
+copy_start _ -> copy_last_h _ >
+ 
+copy_last_h * -> minus1_go_begin * <
+copy_last_h 0 -> copy_0 # >
+copy_last_h 1 -> copy_1 $ >
+ 
+minus1_go_begin $ -> minus1_go_begin $ <
+minus1_go_begin # -> minus1_go_begin # <
+minus1_go_begin _ -> minus1_go_end _ >
+ 
+minus1_go_end $ -> minus1_go_end 1 > 
+minus1_go_end # -> minus1_go_end 0 >
+minus1_go_end 1 -> minus1_go_end 1 >
+minus1_go_end 0 -> minus1_go_end 0 >
+minus1_go_end * -> minus1_go_end * >
+minus1_go_end COPY -> minus1 COPY <
+minus1_go_end MUL_COPY -> minus1 MUL_COPY <
+ 
+ 
+ 
+ 
+ 
+minus1 1 -> add_copy_plus 0 <
+minus1 0 -> minus1 1 <
+minus1 * -> wipe * >
+ 
+wipe 1 -> wipe NULL >
+wipe 0 -> wipe NULL >
+wipe MUL_COPY -> check_null MUL_COPY >
+ 
+back_wipe NULL -> back_wipe _ <
+back_wipe | -> back_wipe _ <
+back_wipe 0 -> back_wipe _ <
+back_wipe 1 -> back_wipe _ <
+back_wipe MUL_COPY -> back_wipe _ <
+back_wipe * -> go_ac _ <
+ 
+check_null 0 -> check_null 0 >
+check_null COPY -> real_wipe | >
+check_null 1 -> wipe_COPY 1 >
+ 
+real_wipe 0 -> real_wipe | >
+real_wipe 1 -> real_wipe | >
+real_wipe _ -> back_wipe _ <
+ 
+wipe_COPY 0 -> wipe_COPY 0 >
+wipe_COPY 1 -> wipe_COPY 1 >
+wipe_COPY COPY -> destroy_COPY | >
+ 
+destroy_COPY 0 -> destroy_COPY | >
+destroy_COPY 1 -> destroy_COPY | >
+destroy_COPY _ -> back_wipe_COPY _ <
+ 
+back_wipe_COPY | -> back_wipe_COPY _ <
+back_wipe_COPY 1 -> copy_MUL_COPY_1 _ <
+back_wipe_COPY 0 -> copy_MUL_COPY_0 _ <
+back_wipe_COPY MUL_COPY -> go_to_old_s _ <
+ 
+copy_MUL_COPY_1 1 -> copy_MUL_COPY_1 1 <
+copy_MUL_COPY_1 0 -> copy_MUL_COPY_1 0 <
+copy_MUL_COPY_1 MUL_COPY -> mul_copy_1 MUL_COPY <
+ 
+mul_copy_1 1 -> mul_copy_1 1 <
+mul_copy_1 0 -> mul_copy_1 0 <
+mul_copy_1 NULL -> mul_try_copy 1 > 
+ 
+copy_MUL_COPY_0 1 -> copy_MUL_COPY_0 1 <
+copy_MUL_COPY_0 0 -> copy_MUL_COPY_0 0 <
+copy_MUL_COPY_0 MUL_COPY -> mul_copy_0 MUL_COPY <
+ 
+mul_copy_0 1 -> mul_copy_0 1 <
+mul_copy_0 0 -> mul_copy_0 0 <
+mul_copy_0 NULL -> mul_try_copy 0 >
+ 
+mul_try_copy 0 -> mul_try_copy 0 >
+mul_try_copy 1 -> mul_try_copy 1 >
+mul_try_copy MUL_COPY -> mul_try_copy MUL_COPY >
+mul_try_copy _ -> back_wipe_COPY _ <
+ 
+go_to_old_s NULL -> go_to_old_s 0 <
+go_to_old_s 1 -> go_to_old_s 1 <
+go_to_old_s 0 -> go_to_old_s 0 <
+go_to_old_s * -> go_to_old_s * <
+go_to_old_s _ -> old_s _ >
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+add_copy_plus 1 -> add_copy_plus 1 <
+add_copy_plus 0 -> add_copy_plus 0 <
+add_copy_plus * -> add_copy_plus * <
+add_copy_plus _ -> add_copy + >
+ 
+add_copy * -> add_copy * >
+add_copy COPY -> add_copy COPY >
+add_copy MUL_COPY -> add_copy MUL_COPY >
+add_copy + -> add_copy + >
+add_copy 1 -> add_copy 1 >
+add_copy 0 -> add_copy 0 >
+add_copy _ -> copy _ <
+add_copy $ -> copy $ <
+add_copy # -> copy # <
+ 
+copy 1 -> ncopy_1 $ <
+copy 0 -> ncopy_0 # <
+copy COPY -> go_to_recharge COPY >
+ 
+go_to_recharge $ -> go_to_recharge 1 >
+go_to_recharge # -> go_to_recharge 0 >
+go_to_recharge _ -> go_to_begin _ <
+ 
+go_to_begin 0 -> go_to_begin 0 <
+go_to_begin 1 -> go_to_begin 1 <
+go_to_begin + -> go_to_begin + <
+go_to_begin * -> go_to_begin * <
+go_to_begin COPY -> go_to_begin COPY <
+go_to_begin MUL_COPY -> go_to_begin MUL_COPY <
+go_to_begin _ -> add_start _ >
+ 
+ncopy_0 0 -> ncopy_0 0 <
+ncopy_0 1 -> ncopy_0 1 <
+ncopy_0 # -> ncopy_0 # <
+ncopy_0 $ -> ncopy_0 $ <
+ncopy_0 COPY -> ncopy_0 COPY <
+ncopy_0 MUL_COPY -> ncopy_0 MUL_COPY <
+ncopy_0 * -> ncopy_0 * <
+ncopy_0 + -> ncopy_0 + <
+ncopy_0 _ -> add_copy 0 >
+ 
+ncopy_1 0 -> ncopy_1 0 <
+ncopy_1 1 -> ncopy_1 1 <
+ncopy_1 # -> ncopy_1 # <
+ncopy_1 $ -> ncopy_1 $ <
+ncopy_1 COPY -> ncopy_1 COPY <
+ncopy_1 MUL_COPY -> ncopy_1 MUL_COPY <
+ncopy_1 * -> ncopy_1 * <
+ncopy_1 + -> ncopy_1 + <
+ncopy_1 _ -> add_copy 1 >
+ 
+go_ac 1 -> go_ac 1 <
+go_ac 0 -> go_ac 0 <
+go_ac _ -> ac _ >
+ 
+copy_1 # -> copy_1 # >
+copy_1 * -> copy_1 * >
+copy_1 1 -> copy_1 1 >
+copy_1 0 -> copy_1 0 >
+copy_1 $ -> copy_1 $ >
+copy_1 MUL_COPY -> copy_1 MUL_COPY >
+copy_1 COPY -> copy_1 COPY >
+copy_1 _ -> copy_back 1 <
+ 
+copy_0 # -> copy_0 # >
+copy_0 * -> copy_0 * >
+copy_0 1 -> copy_0 1 >
+copy_0 0 -> copy_0 0 >
+copy_0 $ -> copy_0 $ >
+copy_0 MUL_COPY -> copy_0 MUL_COPY >
+copy_0 COPY -> copy_0 COPY >
+copy_0 _ -> copy_back 0 <
+ 
+resize_go_back 1 -> resize_go_back 1 >
+resize_go_back 0 -> resize_go_back 0 >
+resize_go_back _ -> resize_cpy _ <
+ 
+resize_cpy 0 -> resize_cpy_0 | >
+resize_cpy 1 -> resize_cpy_1 | > 
+resize_cpy _ -> delete_all_ _ >
+ 
+resize_cpy_0 | -> resize_cpy_0 | >
+resize_cpy_0 _ -> resize_cpy_0 | >
+resize_cpy_0 * -> _cpy_0 * <
+resize_cpy_0 1 -> _cpy_0 1 <
+resize_cpy_0 0 -> _cpy_0 0 <
+ 
+_cpy_0 _ -> resize_find_next 0 < 
+_cpy_0 | -> resize_find_next 0 <
+ 
+resize_cpy_1 | -> resize_cpy_1 | >
+resize_cpy_1 _ -> resize_cpy_1 | >
+resize_cpy_1 * -> _cpy_1 * <
+resize_cpy_1 1 -> _cpy_1 1 <
+resize_cpy_1 0 -> _cpy_1 0 <
+ 
+_cpy_1 _ -> resize_find_next 1 < 
+_cpy_1 | -> resize_find_next 1 <
+ 
+resize_find_next | -> resize_find_next | <
+resize_find_next _ -> delete_all _ >
+resize_find_next 0 -> resize_cpy_0 | >
+resize_find_next 1 -> resize_cpy_1 | >
+ 
+delete_all | -> delete_all _ >
+delete_all 1 -> minus1_go_end 1 >
+delete_all 0 -> minus1_go_end 0 >
+ 
+ 
+ 
+ 
+ 
+ 
+add_start 0 -> add_start 0 >
+add_start 1 -> add_start 1 >
+add_start + -> add_to_num | <
+
+add_to_num 1 -> add_to_num_1 | >
+add_to_num 0 -> add_to_num_0 | >
+
+add_to_num_0 | -> add_to_num_0 | > 
+add_to_num_0 1 -> add_to_num_0 1 >
+add_to_num_0 0 -> add_to_num_0 0 >
+add_to_num_0 # -> add_to_num_0_point # <
+add_to_num_0 $ -> add_to_num_0_point $ <
+add_to_num_0 * -> add_to_num_0_point * <
+
+add_to_num_0_point 1 -> add_find_num_before $ <
+add_to_num_0_point 0 -> add_find_num_before # <
+add_to_num_0_point | -> add_find_num_before # <
+
+add_to_num_1 | -> add_to_num_1 | > 
+add_to_num_1 1 -> add_to_num_1 1 >
+add_to_num_1 0 -> add_to_num_1 0 >
+add_to_num_1 # -> add_to_num_1_point # <
+add_to_num_1 $ -> add_to_num_1_point $ <
+add_to_num_1 * -> add_to_num_1_point * <
+
+add_to_num_1_point 1 -> add_to_num_1_point_pass # <
+add_to_num_1_point 0 -> add_find_num_before $ <
+add_to_num_1_point | -> add_find_num_before $ <
+
+add_to_num_1_point_pass 1 -> add_to_num_1_point_pass 0 <
+add_to_num_1_point_pass 0 -> add_find_num_before 1 <
+add_to_num_1_point_pass | -> add_find_num_before 1 <
+
+add_find_num_before 1 -> add_find_num_before 1 <
+add_find_num_before 0 -> add_find_num_before 0 <
+add_find_num_before | -> add_find_num | <
+
+add_find_num | -> add_find_num | <
+add_find_num 1 -> add_to_num_1 | >
+add_find_num 0 -> add_to_num_0 | >
+add_find_num _ -> slash_zero _ >
+
+slash_zero | -> slash_zero _ >
+slash_zero 0 -> slash_zero _ >
+slash_zero # -> slash_zero _ >
+slash_zero 1 -> easy_splash 1 >
+slash_zero $ -> easy_splash 1 >
+
+easy_splash 1 -> easy_splash 1 >
+easy_splash $ -> easy_splash 1 >
+easy_splash # -> easy_splash 0 >
+easy_splash 0 -> easy_splash 0 >
+easy_splash * -> minus1_go_end * >
+
+
+
